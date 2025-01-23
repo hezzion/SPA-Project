@@ -1,0 +1,35 @@
+/* Footer Styles */
+.footer {
+    text-align: center;
+    padding: 1.5rem;
+    background: #f8f9fa;
+    color: #555;
+    margin-top: 2rem;
+    font-size: 0.9rem;
+  }
+  
+  .footer-links {
+    margin-top: 0.5rem;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+  }
+  
+  .footer-links a {
+    text-decoration: none;
+    color: #ff6f61;
+    font-weight: bold;
+    margin: 0 0.5rem;
+  }
+  
+  .footer-links a:hover {
+    color: #333;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 600px) {
+    .footer-links {
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+  }

@@ -1,0 +1,159 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Body Styles */
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f8f8;
+    color: #333;
+  }
+  
+  /* Header Styling */
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+    background-color: #5c59e9d2; /* Green background */
+    color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Logo Styling */
+  .logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  
+  /* Search Form Styling */
+  .search-form {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 30px;
+    overflow: hidden;
+    max-width: 500px;
+    flex-grow: 1;
+    margin-right: 2rem;
+  }
+  
+  .search-bar {
+    width: 100%;
+    padding: 0.8rem;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    border-radius: 30px;
+  }
+  
+  .search-button {
+    padding: 0.8rem 1.2rem;
+    background-color: #f1c40f; /* Yellow color */
+    border: none;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border-radius: 30px;
+  }
+  
+  .search-button:hover {
+    background-color: #f39c12;
+  }
+  
+  /* Navigation Menu */
+  .nav {
+    display: flex;
+    gap: 1.5rem;
+  }
+  
+  .nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+  }
+  
+  .nav a:hover {
+    color: #f39c12; /* Yellow color on hover */
+  }
+  
+  /* Media Queries for Responsiveness */
+  @media (max-width: 1024px) {
+    .header {
+      padding: 1rem;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  
+    .search-form {
+      margin-top: 1rem;
+      width: 100%;
+    }
+  
+    .nav {
+      margin-top: 1rem;
+      flex-direction: column;
+      gap: 1rem;
+    }
+  
+    .search-bar {
+      font-size: 0.9rem;
+      padding: 0.7rem;
+    }
+  
+    .search-button {
+      font-size: 0.9rem;
+      padding: 0.7rem 1rem;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .logo {
+      font-size: 1.5rem;
+    }
+  
+    .search-bar {
+      padding: 0.5rem;
+    }
+  
+    .nav a {
+      font-size: 0.9rem;
+    }
+  
+    .search-form {
+      max-width: 90%;
+    }
+  
+    .nav {
+      align-items: center;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .header {
+      padding: 0.5rem;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  
+    .search-bar {
+      font-size: 0.9rem;
+      padding: 0.5rem;
+    }
+  
+    .search-button {
+      font-size: 0.8rem;
+      padding: 0.6rem 1rem;
+    }
+  
+    .nav a {
+      font-size: 0.8rem;
+    }
+  }
