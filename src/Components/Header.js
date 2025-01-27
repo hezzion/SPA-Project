@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import "./Header.css";
+import './Header.css';
 
 const Header = ({ setSearchKeyword }) => {
   const [searchTerm, setSearchTerm] = useState("");
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isNavOpen, setIsNavOpen] = useState(false); // State to manage nav toggle
   const navigate = useNavigate();
 
   const handleSearchSubmit = (e) => {
@@ -13,6 +13,10 @@ const Header = ({ setSearchKeyword }) => {
       setSearchKeyword(searchTerm);
       navigate(`/search?keyword=${searchTerm}`);
     }
+  };
+
+  const handleToggle = () => {
+    setIsNavOpen((prevState) => !prevState); // Toggle the navigation menu state
   };
 
   return (
@@ -37,12 +41,12 @@ const Header = ({ setSearchKeyword }) => {
         </div>
       </form>
       <button
-        className="menu-toggle"
-        onClick={() => setIsMenuOpen(!isMenuOpen)}
+        className="menu-toggle-button"
+        onClick={handleToggle} // Add toggle functionality here
       >
         ☰
       </button>
-      <nav className={`nav ${isMenuOpen ? "open" : ""}`}>
+      <nav className={`nav ${isNavOpen ? "open" : ""}`}>
         <Link to="/">Home</Link>
         <Link to="/search">Search</Link>
         <Link to="/dashboard">Dashboard</Link>
@@ -55,4 +59,3 @@ const Header = ({ setSearchKeyword }) => {
 };
 
 export default Header;
-

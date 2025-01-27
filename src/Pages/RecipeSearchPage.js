@@ -23,7 +23,7 @@ const RecipeSearchPage = () => {
     const sampleRecipes = [
       { id: 1, title: "Spaghetti", image: "/image.png" },
       { id: 2, title: "Chicken", image: "/image copy 3.png" },
-      { id: 3, title: "Suya", image: "/image copy 2.png" },
+      { id: 3, title: "Suya", image: "/image.png" },
       { id: 4, title: "Egusi Soup", image: "/image copy 3.png" },
       { id: 5, title: "Egusi Soup", image: "/image copy 3.png" },
       { id: 6, title: "Egusi Soup", image: "/image copy 3.png" },

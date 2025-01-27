@@ -6,6 +6,8 @@
   background-color: #1e1c1bbf;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   height: 85px;
+  position: relative;
+  z-index: 100;
 }
 
 .logo {
@@ -13,8 +15,8 @@
 }
 
 .logo-img {
-  width: 130px;
-  height: 130px;
+  width: 100px;
+  height: auto;
 }
 
 .search-form {
@@ -31,8 +33,8 @@
 .search-bar {
   padding: 0.5rem 1rem;
   border-radius: 6px;
-  border: 7px solid #ddd;
-  width: 69%;
+  border: 2px solid #ddd;
+  width: 70%;
 }
 
 .search-button {
@@ -43,16 +45,17 @@
   border-radius: 4px;
   cursor: pointer;
   width: 80px;
-  height: 43px;
+  height: 35px;
 }
 
 .search-button:hover {
-  background-color: #d3e0d4;
+  background-color: #3e8e41;
 }
 
 .nav {
   display: flex;
   gap: 15px;
+  align-items: center;
 }
 
 .nav a {
@@ -65,17 +68,26 @@
   color: #4caf50;
 }
 
-/* Toggle button for mobile view */
+/* Enhanced Toggle Button */
 .menu-toggle-button {
   display: none;
-  background-color: transparent;
+  background-color: #878080;
   border: none;
-  font-size: 24px;
+  font-size: 26px;
+  padding: 0.5rem;
+  border-radius: 50%;
   cursor: pointer;
-  color: white;
+  color: #fff;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
 }
 
-/* Nav menu hidden by default in mobile view */
+.menu-toggle-button:hover {
+  background-color: #0e5610;
+}
+
+/* Hidden nav menu for mobile */
 .nav {
   display: flex;
   gap: 15px;
@@ -85,22 +97,35 @@
   display: flex;
   flex-direction: column;
   position: absolute;
-  top: 85px; /* Below the header */
-  right: 20px;
+  top: 85px;
+  right: 10px;
   background-color: #1e1c1bbf;
   padding: 1rem;
   border-radius: 6px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
   z-index: 1000;
+  width: 90%;
 }
 
-/* Media query for mobile view */
+/* Media query for mobile and desktop views */
 @media (max-width: 768px) {
   .menu-toggle-button {
-    display: block;
+    display: flex; /* Visible only in mobile view */
+    margin-right: 1rem;
   }
 
   .nav {
     display: none; /* Hidden by default */
+    flex-direction: column;
+  }
+
+  .search-form {
+    display: none; /* Optionally hide search bar for simplicity */
+  }
+}
+
+@media (min-width: 769px) {
+  .menu-toggle-button {
+    display: none; /* Ensure it's hidden in desktop view */
   }
 }
