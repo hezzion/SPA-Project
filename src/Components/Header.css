@@ -13,7 +13,7 @@
 }
 
 .logo-img {
-  width: 130px; /* Adjust the width as needed */
+  width: 130px;
   height: 130px;
 }
 
@@ -63,4 +63,44 @@
 
 .nav a:hover {
   color: #4caf50;
+}
+
+/* Toggle button for mobile view */
+.menu-toggle-button {
+  display: none;
+  background-color: transparent;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: white;
+}
+
+/* Nav menu hidden by default in mobile view */
+.nav {
+  display: flex;
+  gap: 15px;
+}
+
+.nav.open {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 85px; /* Below the header */
+  right: 20px;
+  background-color: #1e1c1bbf;
+  padding: 1rem;
+  border-radius: 6px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+}
+
+/* Media query for mobile view */
+@media (max-width: 768px) {
+  .menu-toggle-button {
+    display: block;
+  }
+
+  .nav {
+    display: none; /* Hidden by default */
+  }
 }

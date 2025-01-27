@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import './Header.css';
+import "./Header.css";
 
 const Header = ({ setSearchKeyword }) => {
   const [searchTerm, setSearchTerm] = useState("");
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navigate = useNavigate();
 
   const handleSearchSubmit = (e) => {
@@ -18,9 +19,7 @@ const Header = ({ setSearchKeyword }) => {
     <header className="header">
       <div className="logo">
         <Link to="/">
-        <img src="/logo.png" alt="RecipeVault Logo" className="logo-img" />
-
-
+          <img src="/logo.png" alt="RecipeVault Logo" className="logo-img" />
         </Link>
       </div>
       <form onSubmit={handleSearchSubmit} className="search-form">
@@ -37,7 +36,13 @@ const Header = ({ setSearchKeyword }) => {
           </button>
         </div>
       </form>
-      <nav className="nav">
+      <button
+        className="menu-toggle"
+        onClick={() => setIsMenuOpen(!isMenuOpen)}
+      >
+        ☰
+      </button>
+      <nav className={`nav ${isMenuOpen ? "open" : ""}`}>
         <Link to="/">Home</Link>
         <Link to="/search">Search</Link>
         <Link to="/dashboard">Dashboard</Link>
@@ -50,3 +55,4 @@ const Header = ({ setSearchKeyword }) => {
 };
 
 export default Header;
+
