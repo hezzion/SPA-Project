@@ -8,102 +8,121 @@ const RecipeForm = ({ formTitle, initialData, onSubmit, onCancel }) => {
   const [steps, setSteps] = useState(initialData?.steps || ['']);
   const [tags, setTags] = useState(initialData?.tags || '');
 
-  const handleAddIngredient = () => setIngredients([...ingredients, '']);
-  const handleRemoveIngredient = (index) => {
-    setIngredients(ingredients.filter((_, i) => i !== index));
+  const handleDynamicChange = (setState, index, value) => {
+    const updatedList = [...setState];
+    updatedList[index] = value;
+    setState(updatedList);
   };
 
-  const handleIngredientChange = (index, value) => {
-    const newIngredients = [...ingredients];
-    newIngredients[index] = value;
-    setIngredients(newIngredients);
-  };
+  const handleAddField = (setState, initialValue) => setState((prev) => [...prev, initialValue]);
 
-  const handleAddStep = () => setSteps([...steps, '']);
-  const handleRemoveStep = (index) => {
-    setSteps(steps.filter((_, i) => i !== index));
-  };
-
-  const handleStepChange = (index, value) => {
-    const newSteps = [...steps];
-    newSteps[index] = value;
-    setSteps(newSteps);
-  };
+  const handleRemoveField = (setState, index) => setState((prev) => prev.filter((_, i) => i !== index));
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSubmit({ recipeName, image, ingredients, steps, tags });
+    if (recipeName.trim() && image.trim() && ingredients.length && steps.length) {
+      onSubmit({ recipeName, image, ingredients, steps, tags });
+    } else {
+      alert('Please fill out all fields.');
+    }
   };
 
   return (
-    <form className="recipe-form" onSubmit={handleSubmit}>
-      <h2>{formTitle}</h2>
-      <label>Recipe Name:</label>
+    <form className="recipe-form p-6 bg-white shadow-md rounded-lg" onSubmit={handleSubmit}>
+      <h2 className="form-title text-2xl font-bold mb-4">{formTitle}</h2>
+
+      <label className="block mb-2 font-semibold">Recipe Name:</label>
       <input
         type="text"
         value={recipeName}
         onChange={(e) => setRecipeName(e.target.value)}
+        placeholder="Enter the recipe name"
+        className="input-field mb-4"
         required
       />
-      <label>Image Upload:</label>
+
+      <label className="block mb-2 font-semibold">Image Upload:</label>
       <input
         type="text"
         value={image}
         onChange={(e) => setImage(e.target.value)}
         placeholder="Paste image URL"
+        className="input-field mb-4"
       />
-      <label>Ingredients:</label>
+      {image && (
+        <div className="image-preview mb-4">
+          <img src={image} alt="Recipe Preview" className="w-full h-48 object-cover rounded-lg shadow" />
+        </div>
+      )}
+
+      <label className="block mb-2 font-semibold">Ingredients:</label>
       {ingredients.map((ingredient, index) => (
-        <div key={index} className="dynamic-input">
+        <div key={index} className="dynamic-input mb-4 flex items-center">
           <input
             type="text"
             value={ingredient}
-            onChange={(e) => handleIngredientChange(index, e.target.value)}
+            onChange={(e) => handleDynamicChange(ingredients, index, e.target.value)}
             placeholder={`Ingredient ${index + 1}`}
+            className="input-field flex-1 mr-2"
           />
           <button
             type="button"
-            onClick={() => handleRemoveIngredient(index)}
+            onClick={() => handleRemoveField(setIngredients, index)}
+            className="btn-danger mr-2"
             disabled={ingredients.length === 1}
           >
             -
           </button>
-          <button type="button" onClick={handleAddIngredient}>
-            +
-          </button>
+          {index === ingredients.length - 1 && (
+            <button type="button" onClick={() => handleAddField(setIngredients, '')} className="btn-primary">
+              +
+            </button>
+          )}
         </div>
       ))}
-      <label>Steps:</label>
+
+      <label className="block mb-2 font-semibold">Steps:</label>
       {steps.map((step, index) => (
-        <div key={index} className="dynamic-input">
+        <div key={index} className="dynamic-input mb-4 flex items-center">
           <textarea
             value={step}
-            onChange={(e) => handleStepChange(index, e.target.value)}
+            onChange={(e) => handleDynamicChange(steps, index, e.target.value)}
             placeholder={`Step ${index + 1}`}
+            className="input-field flex-1 mr-2"
           ></textarea>
           <button
             type="button"
-            onClick={() => handleRemoveStep(index)}
+            onClick={() => handleRemoveField(setSteps, index)}
+            className="btn-danger mr-2"
             disabled={steps.length === 1}
           >
             -
           </button>
-          <button type="button" onClick={handleAddStep}>
-            +
-          </button>
+          {index === steps.length - 1 && (
+            <button type="button" onClick={() => handleAddField(setSteps, '')} className="btn-primary">
+              +
+            </button>
+          )}
         </div>
       ))}
-      <label>Tags:</label>
-      <select value={tags} onChange={(e) => setTags(e.target.value)}>
+
+      <label className="block mb-2 font-semibold">Tags:</label>
+      <select
+        value={tags}
+        onChange={(e) => setTags(e.target.value)}
+        className="input-field mb-4"
+        required
+      >
         <option value="">Select a tag</option>
         <option value="vegan">Vegan</option>
         <option value="vegetarian">Vegetarian</option>
         <option value="gluten-free">Gluten-Free</option>
         <option value="dessert">Dessert</option>
       </select>
-      <div className="form-actions">
-        <button type="submit">Submit</button>
-        <button type="button" onClick={onCancel}>
+
+      <div className="form-actions flex justify-between mt-6">
+        <button type="submit" className="btn-primary">Submit</button>
+        <button type="button" onClick={onCancel} className="btn-secondary">
           Cancel
         </button>
       </div>

@@ -14,16 +14,23 @@ const RecipeDetailsPage = () => {
   const sampleRecipes = [
     { 
       id: 1, 
-      title: 'Spaghetti Carbonara', 
+      title: 'Spaghetti Carbonara 🍝', 
       image: '/images/carbonara.jpg',
-      ingredients: ['200g Spaghetti', '100g Pancetta', '2 Eggs', 'Parmesan Cheese', 'Black Pepper'],
+      ingredients: [
+        '200g Spaghetti 🍝', 
+        '100g Pancetta 🥓', 
+        '2 Eggs 🥚', 
+        'Parmesan Cheese 🧀', 
+        'Black Pepper 🌶️'
+      ],
       steps: [
-        'Cook spaghetti in boiling salted water until al dente.',
-        'Fry pancetta in a pan until crispy.',
-        'Whisk eggs and Parmesan together, then mix with pasta and pancetta.',
-        'Serve with cracked black pepper and extra Parmesan.',
+        'Cook spaghetti in boiling salted water until al dente. 🍳',
+        'Fry pancetta in a pan until crispy. 🥓🔥',
+        'Whisk eggs and Parmesan together, then mix with pasta and pancetta. 🥚🧀🍝',
+        'Serve with cracked black pepper and extra Parmesan. 🌶️🧀'
       ]
     },
+    
     // Add more recipes as needed...
   ];
 

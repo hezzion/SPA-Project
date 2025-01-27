@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import Header from "../Components/Header";
@@ -20,19 +19,19 @@ const RecipeSearchPage = () => {
     setSearchTerm(keyword);
   }, [keyword]);
 
-  const sampleRecipes = [
-    { id: 1, title: "Spaghetti", image: "/image.png" },
-    { id: 2, title: "Chicken", image: "/image copy 3.png" },
-    { id: 3, title: "Suya", image: "/image copy 2.png" },
-    { id: 4, title: "Egusi Soup", image: "/image copy 3.png" },
-    { id: 5, title: "Egusi Soup", image: "/image copy 3.png" },
-    { id: 6, title: "Egusi Soup", image: "/image copy 3.png" },
-    { id: 7, title: "Egusi Soup", image: "/image copy 3.png" },
-  ];
-
   useEffect(() => {
+    const sampleRecipes = [
+      { id: 1, title: "Spaghetti", image: "/image.png" },
+      { id: 2, title: "Chicken", image: "/image copy 3.png" },
+      { id: 3, title: "Suya", image: "/image copy 2.png" },
+      { id: 4, title: "Egusi Soup", image: "/image copy 3.png" },
+      { id: 5, title: "Egusi Soup", image: "/image copy 3.png" },
+      { id: 6, title: "Egusi Soup", image: "/image copy 3.png" },
+      { id: 7, title: "Egusi Soup", image: "/image copy 3.png" },
+    ];
+
+    setLoading(true);
     if (searchTerm.trim()) {
-      setLoading(true);
       const filteredResults = sampleRecipes.filter((recipe) =>
         recipe.title.toLowerCase().includes(searchTerm.toLowerCase())
       );
@@ -41,7 +40,7 @@ const RecipeSearchPage = () => {
       setResults([]);
     }
     setLoading(false);
-  }, [searchTerm]);
+  }, [searchTerm]); // No need to include sampleRecipes here anymore
 
   const handleSearchSubmit = (e) => {
     e.preventDefault();
@@ -67,7 +66,7 @@ const RecipeSearchPage = () => {
           </button>
         </form>
         {loading ? (
-          <p>Loading...</p>
+          <p className="loading-text">Loading recipes...</p>
         ) : (
           <>
             <h1 className="search-title">

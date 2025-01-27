@@ -52,8 +52,8 @@
   }
   
   button[type="submit"] {
-    background-color: #4caf50;
-    color: white;
+    background-color: #dbdfdb;
+    color: rgba(32, 31, 31, 0.863);
     border: none;
     border-radius: 4px;
     padding: 0.5rem 1rem;

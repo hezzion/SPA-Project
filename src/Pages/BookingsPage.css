@@ -1,0 +1,86 @@
+/* Flexbox Layout for Chef Details */
+.chef-card {
+    display: flex;
+    align-items: center;
+    gap: 100px;
+    background: linear-gradient(90deg, #5d5c5b, #03502db1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    padding: 50px;
+    margin: 15px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .chef-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  }
+  
+  .chef-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  
+  .chef-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .book-button {
+    margin-top: 12px;
+    background-color: #184f1a;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .book-button:hover {
+    background-color: #45a049;
+  }
+  
+  .selected-chef {
+    margin-top: 24px;
+    padding: 16px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    text-align: center;
+  }
+  
+  .selected-chef h2 {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  
+  .selected-chef p {
+    margin: 8px 0;
+    color: #555;
+  }
+
+ 
+  
+  
+  /* Responsive Adjustments */
+  @media (max-width: 768px) {
+    .chef-card {
+      flex-direction: column;
+      text-align: center;
+    }
+  
+    .chef-image {
+      margin-bottom: 12px;
+    }
+  
+    .chef-details {
+      text-align: center;
+    }
+  
+    .book-button {
+      width: 100%;
+    }
+  }
+  

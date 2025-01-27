@@ -5,6 +5,9 @@ import RecipeSearchPage from "./Pages/RecipeSearchPage";
 import RecipeDetailsPage from './Pages/RecipeDetailsPage';
 import AddEditRecipePage from "./Pages/AddEditRecipePage";
 import UserDashboard from "./Pages/UserDashboardPage";
+import BookingsPage from './Pages/BookingsPage';
+import '@fortawesome/fontawesome-free/css/all.min.css';
+
 
 const App = () => {
   const [searchKeyword, setSearchKeyword] = useState("");
@@ -32,6 +35,9 @@ const App = () => {
           path="/dashboard"
           element={<UserDashboard />} 
         />
+        <Route path="/bookings" 
+        element={<BookingsPage />}
+         />
       </Routes>
     </Router>
   );
