@@ -61,7 +61,7 @@ const RandomRecipeBanner = () => {
         <button
           onClick={fetchRandomRecipe}
           style={{
-            backgroundColor: "#ff8c00",
+            backgroundColor: "#0e9f03b5",
             color: "white",
             padding: "10px 20px",
             fontSize: "16px",
