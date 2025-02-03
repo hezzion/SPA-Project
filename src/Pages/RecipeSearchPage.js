@@ -5,9 +5,12 @@ import Footer from "../Components/Footer";
 import RecipeCard from "../Components/RecipeCard";
 import "./RecipeSearchPage.css";
 
+const API_KEY = "7fb19f241fdd4030903dc4ebc5a9899a"; // Replace with your Spoonacular API Key
+const API_URL = "https://api.spoonacular.com/recipes/complexSearch";
+
 const RecipeSearchPage = () => {
   const [results, setResults] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const location = useLocation();
   const navigate = useNavigate();
@@ -17,35 +20,43 @@ const RecipeSearchPage = () => {
 
   useEffect(() => {
     setSearchTerm(keyword);
+    if (keyword) {
+      fetchRecipes(keyword);
+    }
   }, [keyword]);
 
-  useEffect(() => {
-    const sampleRecipes = [
-      { id: 1, title: "Spaghetti", image: "/image.png" },
-      { id: 2, title: "Chicken", image: "/image copy 3.png" },
-      { id: 3, title: "Suya", image: "/image.png" },
-      { id: 4, title: "Egusi Soup", image: "/image copy 3.png" },
-      { id: 5, title: "Egusi Soup", image: "/image copy 3.png" },
-      { id: 6, title: "Egusi Soup", image: "/image copy 3.png" },
-      { id: 7, title: "Egusi Soup", image: "/image copy 3.png" },
-    ];
-
+  const fetchRecipes = async (query) => {
     setLoading(true);
-    if (searchTerm.trim()) {
-      const filteredResults = sampleRecipes.filter((recipe) =>
-        recipe.title.toLowerCase().includes(searchTerm.toLowerCase())
+    console.log("Fetching recipes for:", query);
+
+    try {
+      const response = await fetch(
+        `${API_URL}?query=${query}&number=10&apiKey=${API_KEY}`
       );
-      setResults(filteredResults);
-    } else {
+
+      console.log("API Response Status:", response.status);
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+
+      const data = await response.json();
+      console.log("Fetched Recipes:", data.results);
+
+      setResults(data.results && data.results.length > 0 ? data.results : []);
+    } catch (error) {
+      console.error("Error fetching recipes:", error);
       setResults([]);
     }
+
     setLoading(false);
-  }, [searchTerm]); // No need to include sampleRecipes here anymore
+  };
 
   const handleSearchSubmit = (e) => {
     e.preventDefault();
     if (searchTerm.trim()) {
       navigate(`/search?keyword=${searchTerm}`);
+      fetchRecipes(searchTerm);
     }
   };
 
@@ -65,6 +76,7 @@ const RecipeSearchPage = () => {
             Search
           </button>
         </form>
+
         {loading ? (
           <p className="loading-text">Loading recipes...</p>
         ) : (
@@ -77,7 +89,14 @@ const RecipeSearchPage = () => {
             <div className="recipe-grid">
               {results.length > 0 ? (
                 results.map((recipe) => (
-                  <RecipeCard key={recipe.id} recipe={recipe} />
+                  <RecipeCard
+                    key={recipe.id}
+                    recipe={{
+                      id: recipe.id,
+                      title: recipe.title,
+                      image: recipe.image,
+                    }}
+                  />
                 ))
               ) : (
                 <p className="no-results">

@@ -7,13 +7,14 @@ import "./HomePage.css";
 
 // Move sampleRecipes outside the component
 const sampleRecipes = [
-  { id: 1, title: "Spaghetti", image: "/image.png" },
-  { id: 2, title: "Chicken", image: "/image copy 3.png" },
-  { id: 3, title: "Suya", image: "/image copy 3.png" },
-  { id: 4, title: "Egusi Soup", image: "/image copy 3.png" },
-  { id: 5, title: "Egusi Soup", image: "/image copy 3.png" },
-  { id: 6, title: "Egusi Soup", image: "/image copy 3.png" },
-  { id: 7, title: "Egusi Soup", image: "/image copy 3.png" },
+  { id: 1, title: "Spaghetti", image: "/image copy 3.png" },
+  { id: 2, title: "Chicken", image: "/image.png" },
+  { id: 3, title: "Suya", image: "/suya.jpeg" },
+  { id: 4, title: "Egusi Soup", image: "/egusi.jpeg" },
+  { id: 5, title: "Moi MOi", image: "/moi moi.jpeg" },
+  { id: 6, title: "Beans and plantains ", image: "/Beans.jpeg" },
+  { id: 7, title: "Ogbono soup", image: "/Ogbono soup.jpeg" },
+  { id: 8, title: "Akara", image: "/akara.jpeg" },
 ];
 
 const HomePage = () => {
