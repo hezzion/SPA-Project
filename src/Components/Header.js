@@ -49,10 +49,10 @@ const Header = ({ setSearchKeyword }) => {
       <nav className={`nav ${isNavOpen ? "open" : ""}`}>
         <Link to="/">Home</Link>
         <Link to="/search">Search</Link>
-        <Link to="/dashboard">Dashboard</Link>
+        {/* <Link to="/dashboard">Dashboard</Link> */}
         <Link to="/recipe/1">Recipe Details</Link>
         <Link to="/add-recipe">Add Recipe</Link>
-        <Link to="/bookings">Bookings</Link>
+        {/* <Link to="/bookings">Bookings</Link> */}
       </nav>
     </header>
   );
